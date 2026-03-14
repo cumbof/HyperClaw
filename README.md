@@ -7,18 +7,18 @@ While Large Language Models (LLMs) excel at flexible reasoning, they are held ba
 
 The following skills are availabile to the agent. There is no "infinite capacity" magic, only highly optimized, deterministic vector operations.
 
-| Skill ID | Name | Category | Mechanism and Reality Check |
-|----------|------|----------|-----------------------------|
-| `hdc_working_memory_graph` | Semantic Working Memory | Graph Reasoning | Binds `(Sub, Pred, Obj)` and bundles into a state vector. Capacity is not "infinite". To prevent crosstalk noise from drowning out facts, the Python handler uses Iterative Cleanup Memory to denoise query results. |
-| `hdc_deterministic_state_guard` | Hallucination Guardrail | Logic and Compliance | Encodes operational rules/state machines. The agent queries this skill to perform a rapid cosine similarity check, acting as a hard mathematical boundary against LLM hallucinations. |
-| `hdc_reversible_memory` | Reversible Persona Core | Privacy and Unlearning | A persistent user memory updated via vector addition and "unlearned" viasubtraction. Standard bipolar subtraction is lossy. This skill works flawlessly because the handler maintains an accumulator (pre-thresholding) to guarantee perfect data removal. |
-| `hdc_stream_anomaly_watcher` | High-Speed Stream Watcher | Edge Processing | Builds a rolling "normalcy" prototype from live data streams (e.g., logs, telemetry). Proven edge-computing use case. Runs completely ourside the LLM. Only interrupts the LLM when an incoming vector statistically deviates beyond a strict cosine distance threshold. |
-| `hdc_few_shot_classifier` | Fast Few-Shot Classifier | Edge Processing | Bundles a few labeled examples into class "prototype vectors" for instant classification. Fast and robust, buut handler must enforce pre-normalization of the prototypes so that classes with more examples don't mathematically skew the cosine similarity. |
-| `hdc_sequence_motif_finder` | Sequence and Motif Aligner | Edge Processing | Uses vector permutation (shifting) to encode the strict order of events or strings. Permutations degrade if sequences are too long. Handler uses hierarchical chunking to safely find patterns in massive data streams without token usage. |
-| `hdc_swarm_state_sync` | Multi-Agent State Sync | Swarm Dynamics | Compresses Agent A's semantic landscape into a single vector for Agent B to use. Agent B cannot "read" the vector like text. Furthermore, this only works if both agents initialize with a shared codebook seed. Once shared, Agent B can instantly evaluate if new data aligns with Agent A's context. |
-| `hdc_swarm_consensus` | Swarm Consensus Evaluator | Swarm Dynamics | Bundles the semantic State Vectors of _N_ different agents into a single consensus vector. Bundling naturally creates a superposition favoring repeated concepts. Agents can calculate their cosine distance to this vector to measure mathematical agreement without LLM-to-LLM debates. |
-| `hdc_zero_knowledge_classifier` | Zero-Knowledge Classifier | Privacy and Security | Local environments encode sensitive data into hypervectors before sending them to the LLM. Since the codebook stays local, the vecotrs are pseudo-random to the LLM. The LLM can still accurately cluster and classify the data using cosine similarity without ever accessing the plaintext. |
-|`hdc_multimodal_alignment`| Cross-Modal Verifier | Multimodal Fusion | Encodes different modalities (e.g., text summaries vs. numeric logs) into the same dimensional space. Requires strict encoding rules (fractional encoding for continuous numbers, bag-of-words for text) and pre-bundle normalization to prevent numeric data from overpowering the text signature. |
+| Skill ID | Name | Category |
+|----------|------|----------|
+| [working_memory_graph](skills/working_memory_graph) | Semantic Working Memory | Graph Reasoning |
+| [deterministic_state_guard](skills/deterministic_state_guard) | Hallucination Guardrail | Logic and Compliance |
+| [reversible_memory](skills/reversible_memory) | Reversible Persona Core | Privacy and Unlearning |
+| [stream_anomaly_watcher](skills/stream_anomaly_watcher) | High-Speed Stream Watcher | Edge Processing |
+| [few_shot_classifier](few_shot_classifier) | Fast Few-Shot Classifier | Edge Processing |
+| [sequence_motif_finder](skills/sequence_motif_finder) | Sequence and Motif Aligner | Edge Processing |
+| [swarm_state_sync](skills/swarm_state_sync) | Multi-Agent State Sync | Swarm Dynamics |
+| [swarm_consensus](skills/swarm_consensus) | Swarm Consensus Evaluator | Swarm Dynamics |
+| [zero_knowledge_classifier](skills/zero_knowledge_classifier) | Zero-Knowledge Classifier | Privacy and Security |
+| [multimodal_alignment](skills/multimodal_alignment) | Cross-Modal Verifier | Multimodal Fusion |
 
 ## Installation & Architecture
 
