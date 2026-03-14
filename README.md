@@ -37,15 +37,15 @@ All skills are located in the `/skills` directory and include an LLM-facing `SKI
 
 ```text
 .
-|-- README.md                      # Project overview and setup
-|-- skills/                        # Root directory for skills
-|   |-- catalog.json               # Master index of all available skills and categories
-|   |-- hdc_working_memory_graph/  # Individual skill directory
-|   |   |-- SKILL.md               # Prompt/schema defining the skill for the LLM agent
-|   |   |-- handler.py             # Python execution logic (math via hdlib)
-|   |   |-- examples/              # Example inputs/outputs for prompting
-|   |   |-- tests/                 # Unit tests for the Python handler
-|   |-- ...                        # Other skill directories
+|-- README.md                  # Project overview and setup
+|-- skills/                    # Root directory for skills
+|   |-- catalog.json           # Master index of all available skills and categories
+|   |-- working_memory_graph/  # Individual skill directory
+|   |   |-- SKILL.md           # Prompt/schema defining the skill for the LLM agent
+|   |   |-- handler.py         # Python execution logic (math via hdlib)
+|   |   |-- examples/          # Example inputs/outputs for prompting
+|   |   |-- tests/             # Unit tests for the Python handler
+|   |-- ...                    # Other skill directories
 ```
 
 ## Prerequisites
