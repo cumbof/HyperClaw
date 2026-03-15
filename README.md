@@ -3,6 +3,9 @@ Equip your AI agents with Hyperdimensional Computing superpowers.
 
 While Large Language Models (LLMs) excel at flexible reasoning, they are held back by fundamental architectural flaws: limited context windows, catastrophic forgetting, rule hallucinations, and the inability to process high-speed data stream. HyperClaw functions as a mathematically rigorous cognitive co-processor, offloading these weaknesses to a deterministic vector-symbolic environment (powered by [hdlib](https://github.com/cumbof/hdlib)).
 
+> [!CAUTION]  
+> __LLM-Generated Content Disclaimer:__ The conceptual design, prompt schemas (`SKILL.md`), and mathematical mappings outlined in this repository were generated with the assistance of a Large Language Model (LLM) that can produce subtle logic errors, unoptimized vector operations, or flawed assumptions. Please use these tools wit caution. It is highly recommended to rigorously test the Python execution handlers (`handler.py`) and verify their deterministic outputs befre deploying these skills in any production or sensitive autonomous agent workflows.
+
 ## The Skill Arsenal (Grounded in VSA Math)
 
 The following skills are availabile to the agent. There is no "infinite capacity" magic, only highly optimized, deterministic vector operations.
