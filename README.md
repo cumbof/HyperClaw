@@ -62,7 +62,15 @@ To use these skills locally or deploy them to an agent framework, you will need:
 
 If you use HyperClaw in your software or academic research, give it a credit:
 
-> _Manuscript in preparation_
+```bibtex
+@software{hyperclaw2026,
+    author = {Cumbo, Fabio},
+    title  = {{HyperClaw}: Equip your AI agents with Hyperdimensional Computing superpowers},
+    year   = {2026},
+    url    = {https://github.com/cumbof/HyperClaw},
+    note   = {GitHub repository}
+}
+```
 
 ## License
 
