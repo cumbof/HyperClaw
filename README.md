@@ -10,18 +10,14 @@ While Large Language Models (LLMs) excel at flexible reasoning, they are held ba
 
 The following skills are availabile to the agent. There is no "infinite capacity" magic, only highly optimized, deterministic vector operations.
 
+> [!IMPORTANT]  
+> __Active Development & Roadmap:__ We are actively engineering and mathematically testing new skills. Hit the star ⭐️ and stay updated the moment new Hyperdimensional Computing superpowers drop!
+
 | Skill ID | Name | Category |
 |----------|------|----------|
 | [working_memory_graph](skills/working_memory_graph) | Semantic Working Memory | Graph Reasoning |
 | [deterministic_state_guard](skills/deterministic_state_guard) | Hallucination Guardrail | Logic and Compliance |
 | [reversible_memory](skills/reversible_memory) | Reversible Persona Core | Privacy and Unlearning |
-| [stream_anomaly_watcher](skills/stream_anomaly_watcher) | High-Speed Stream Watcher | Edge Processing |
-| [few_shot_classifier](few_shot_classifier) | Fast Few-Shot Classifier | Edge Processing |
-| [sequence_motif_finder](skills/sequence_motif_finder) | Sequence and Motif Aligner | Edge Processing |
-| [swarm_state_sync](skills/swarm_state_sync) | Multi-Agent State Sync | Swarm Dynamics |
-| [swarm_consensus](skills/swarm_consensus) | Swarm Consensus Evaluator | Swarm Dynamics |
-| [zero_knowledge_classifier](skills/zero_knowledge_classifier) | Zero-Knowledge Classifier | Privacy and Security |
-| [multimodal_alignment](skills/multimodal_alignment) | Cross-Modal Verifier | Multimodal Fusion |
 
 ## Installation & Architecture
 
