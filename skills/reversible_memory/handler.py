@@ -4,7 +4,8 @@ import os
 import pickle
 import numpy as np
 
-from hdlib import Space, Vector
+from hdlib.space import Space
+from hdlib.vector import Vector
 
 # Configuration
 STATE_FILE = "reversible_persona_state.pkl"
@@ -20,11 +21,11 @@ class ReversiblePersonaCore:
 
     def _get_or_create_vector(self, concept_name: str) -> Vector:
         """Retrieves a concept from the Codebook, or creates it if it doesn't exist."""
-        if concept_name not in self.space.memory:
+        if concept_name not in self.space.memory():
             # Create a new random bipolar vector (-1, 1) for the concept
             vec = Vector(name=concept_name, size=VECTOR_SIZE)
             self.space.insert(vec)
-        return self.space.get(concept_name)
+        return self.space.get(names=[concept_name])[0]
 
     def load_state(self):
         """Loads the persistent HDC space and persona accumulators from disk."""
