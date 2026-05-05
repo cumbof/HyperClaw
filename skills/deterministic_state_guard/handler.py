@@ -76,7 +76,7 @@ class DeterministicStateGuard:
                 self.rulebook_vector = v_rule
             else:
                 bundled_array = self.rulebook_vector.vector + v_rule.vector
-                thresholded = np.where(bundled_array > 0, 1, -1)
+                thresholded = np.where(bundled_array >= 0, 1, -1)
                 self.rulebook_vector = Vector(name="Rulebook", size=VECTOR_SIZE, vector=thresholded)
             
             added_count += 1

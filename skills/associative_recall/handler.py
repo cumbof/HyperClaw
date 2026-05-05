@@ -96,7 +96,7 @@ class AssociativeRecall:
         store_vec = Vector(
             name="__store__",
             size=VECTOR_SIZE,
-            vector=np.where(raw_acc > 0, 1, -1),
+            vector=np.where(raw_acc >= 0, 1, -1),
         )
 
         # UNBIND: Store * V_key  ≈  V_value

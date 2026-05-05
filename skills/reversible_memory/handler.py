@@ -115,7 +115,7 @@ class ReversiblePersonaCore:
             
         raw_accumulator = self.accumulators[persona_id]
         # Apply majority-rule threshold to convert back to standard bipolar (-1, 1)
-        thresholded_array = np.where(raw_accumulator > 0, 1, -1)
+        thresholded_array = np.where(raw_accumulator >= 0, 1, -1)
         return Vector(name=f"persona_{persona_id}", size=VECTOR_SIZE, vector=thresholded_array)
 
 def main():

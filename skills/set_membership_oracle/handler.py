@@ -109,7 +109,7 @@ class SetMembershipOracle:
         set_vec = Vector(
             name="__set__",
             size=VECTOR_SIZE,
-            vector=np.where(raw_acc > 0, 1, -1),
+            vector=np.where(raw_acc >= 0, 1, -1),
         )
 
         dist = set_vec.dist(v_element)
@@ -137,12 +137,12 @@ class SetMembershipOracle:
         vec_a = Vector(
             name="__set_a__",
             size=VECTOR_SIZE,
-            vector=np.where(self.sets[set_id_a] > 0, 1, -1),
+            vector=np.where(self.sets[set_id_a] >= 0, 1, -1),
         )
         vec_b = Vector(
             name="__set_b__",
             size=VECTOR_SIZE,
-            vector=np.where(self.sets[set_id_b] > 0, 1, -1),
+            vector=np.where(self.sets[set_id_b] >= 0, 1, -1),
         )
 
         dist = vec_a.dist(vec_b)

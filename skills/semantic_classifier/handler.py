@@ -101,7 +101,7 @@ class SemanticClassifier:
         query_vec = Vector(
             name="__query__",
             size=VECTOR_SIZE,
-            vector=np.where(query_acc > 0, 1, -1),
+            vector=np.where(query_acc >= 0, 1, -1),
         )
 
         # Compare query to every class prototype
@@ -110,7 +110,7 @@ class SemanticClassifier:
             proto_vec = Vector(
                 name=f"__proto_{class_label}__",
                 size=VECTOR_SIZE,
-                vector=np.where(proto_acc > 0, 1, -1),
+                vector=np.where(proto_acc >= 0, 1, -1),
             )
             dist = query_vec.dist(proto_vec)
             results.append((class_label, dist))

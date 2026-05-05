@@ -71,7 +71,7 @@ class WorkingMemoryGraph:
                 # Apply majority rule thresholding to keep it bipolar (-1, 1)
                 # Note: For a true reversible memory, we would skip thresholding here, 
                 # but for a standard queryable graph, thresholding controls noise.
-                thresholded = np.where(bundled_array > 0, 1, -1)
+                thresholded = np.where(bundled_array >= 0, 1, -1)
                 self.memory_graph = Vector(name="MemoryGraph", size=VECTOR_SIZE, vector=thresholded)
             
             added_count += 1

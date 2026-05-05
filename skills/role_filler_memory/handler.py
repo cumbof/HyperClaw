@@ -98,7 +98,7 @@ class RoleFillerMemory:
         frame_vec = Vector(
             name="__frame__",
             size=VECTOR_SIZE,
-            vector=np.where(raw_acc > 0, 1, -1),
+            vector=np.where(raw_acc >= 0, 1, -1),
         )
 
         # UNBIND: Frame * V_role  ≈  V_filler
@@ -161,7 +161,7 @@ class RoleFillerMemory:
         query_vec = Vector(
             name="__query_frame__",
             size=VECTOR_SIZE,
-            vector=np.where(query_acc > 0, 1, -1),
+            vector=np.where(query_acc >= 0, 1, -1),
         )
 
         results = []
@@ -169,7 +169,7 @@ class RoleFillerMemory:
             frame_vec = Vector(
                 name=f"__f_{frame_id}__",
                 size=VECTOR_SIZE,
-                vector=np.where(raw_acc > 0, 1, -1),
+                vector=np.where(raw_acc >= 0, 1, -1),
             )
             dist = query_vec.dist(frame_vec)
             results.append((frame_id, dist))
