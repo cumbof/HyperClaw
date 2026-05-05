@@ -1,5 +1,5 @@
 # Associative Recall
-__Category:__ Pattern Recognition
+__Category:__ Associative Memory
 
 ## Overview
 

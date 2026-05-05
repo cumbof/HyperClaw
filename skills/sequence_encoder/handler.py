@@ -96,8 +96,9 @@ class SequenceEncoder:
             return {"status": "failed", "message": f"Item '{item}' not in codebook."}
 
         raw_acc = self.sequences[sequence_id]
-        # Apply majority-rule threshold to recover a bipolar representation
-        thresholded = np.where(raw_acc > 0, 1, np.where(raw_acc < 0, -1, 1))
+        # Apply majority-rule threshold to recover a bipolar representation.
+        # Ties (zero) are broken to +1 arbitrarily; they contribute negligible signal.
+        thresholded = np.where(raw_acc >= 0, 1, -1)
         v_mem = Vector(name="__seq_mem__", size=VECTOR_SIZE, vector=thresholded)
 
         # UNBIND: Memory * permute(item)  ≈  V_next

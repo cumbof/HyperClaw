@@ -22,7 +22,7 @@ The following skills are availabile to the agent. There is no "infinite capacity
 | [semantic_classifier](skills/semantic_classifier) | Semantic Classifier | Classification |
 | [set_membership_oracle](skills/set_membership_oracle) | Set Membership Oracle | Data Structures |
 | [role_filler_memory](skills/role_filler_memory) | Role-Filler Memory | Structural Reasoning |
-| [associative_recall](skills/associative_recall) | Associative Recall | Pattern Recognition |
+| [associative_recall](skills/associative_recall) | Associative Recall | Associative Memory |
 
 ## Installation & Architecture
 
