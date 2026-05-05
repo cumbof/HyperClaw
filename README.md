@@ -18,6 +18,11 @@ The following skills are availabile to the agent. There is no "infinite capacity
 | [working_memory_graph](skills/working_memory_graph) | Semantic Working Memory | Graph Reasoning |
 | [deterministic_state_guard](skills/deterministic_state_guard) | Hallucination Guardrail | Logic and Compliance |
 | [reversible_memory](skills/reversible_memory) | Reversible Persona Core | Privacy and Unlearning |
+| [sequence_encoder](skills/sequence_encoder) | Sequence Encoder | Sequence Learning |
+| [semantic_classifier](skills/semantic_classifier) | Semantic Classifier | Classification |
+| [set_membership_oracle](skills/set_membership_oracle) | Set Membership Oracle | Data Structures |
+| [role_filler_memory](skills/role_filler_memory) | Role-Filler Memory | Structural Reasoning |
+| [associative_recall](skills/associative_recall) | Associative Recall | Pattern Recognition |
 
 ## Installation & Architecture
 
