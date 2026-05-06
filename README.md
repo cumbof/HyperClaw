@@ -18,6 +18,21 @@ The following skills are availabile to the agent. There is no "infinite capacity
 | [working_memory_graph](skills/working_memory_graph) | Semantic Working Memory | Graph Reasoning |
 | [deterministic_state_guard](skills/deterministic_state_guard) | Hallucination Guardrail | Logic and Compliance |
 | [reversible_memory](skills/reversible_memory) | Reversible Persona Core | Privacy and Unlearning |
+| [sequence_encoder](skills/sequence_encoder) | Sequence Encoder | Sequence Learning |
+| [semantic_classifier](skills/semantic_classifier) | Semantic Classifier | Classification |
+| [set_membership_oracle](skills/set_membership_oracle) | Set Membership Oracle | Data Structures |
+| [role_filler_memory](skills/role_filler_memory) | Role-Filler Memory | Structural Reasoning |
+| [associative_recall](skills/associative_recall) | Associative Recall | Associative Memory |
+| [analogy_engine](skills/analogy_engine) | Analogy Engine | Relational Reasoning |
+| [episodic_memory](skills/episodic_memory) | Episodic Memory | Temporal Reasoning |
+| [concept_hierarchy](skills/concept_hierarchy) | Concept Hierarchy | Knowledge Representation |
+| [anomaly_detector](skills/anomaly_detector) | Anomaly Detector | Monitoring and Safety |
+| [graph_navigator](skills/graph_navigator) | Graph Navigator | Graph Reasoning |
+| [attribute_filter](skills/attribute_filter) | Attribute Filter | Structured Query |
+| [deduplication_cache](skills/deduplication_cache) | Deduplication Cache | Data Structures |
+| [causal_chain](skills/causal_chain) | Causal Chain | Causal Reasoning |
+| [multicontext_switcher](skills/multicontext_switcher) | Multicontext Switcher | Cognitive Architecture |
+| [event_counter](skills/event_counter) | Event Counter | Stream Processing |
 
 ## Installation & Architecture
 

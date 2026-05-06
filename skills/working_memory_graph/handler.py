@@ -4,7 +4,8 @@ import os
 import pickle
 import numpy as np
 
-from hdlib import Space, Vector
+from hdlib.space import Space
+from hdlib.vector import Vector
 
 # Configuration
 STATE_FILE = "working_memory_state.pkl"
@@ -18,11 +19,11 @@ class WorkingMemoryGraph:
 
     def _get_or_create_vector(self, concept_name: str) -> Vector:
         """Retrieves a concept from the Codebook, or creates it if it doesn't exist."""
-        if concept_name not in self.space.memory:
+        if concept_name not in self.space.memory():
             # Create a new random bipolar vector for the concept
             vec = Vector(name=concept_name, size=VECTOR_SIZE)
             self.space.insert(vec)
-        return self.space.get(concept_name)
+        return self.space.get(names=[concept_name])[0]
 
     def load_state(self):
         """Loads the persistent HDC space and memory graph from disk."""
@@ -71,7 +72,7 @@ class WorkingMemoryGraph:
                 # Apply majority rule thresholding to keep it bipolar (-1, 1)
                 # Note: For a true reversible memory, we would skip thresholding here, 
                 # but for a standard queryable graph, thresholding controls noise.
-                thresholded = np.where(bundled_array > 0, 1, -1)
+                thresholded = np.where(bundled_array >= 0, 1, -1)
                 self.memory_graph = Vector(name="MemoryGraph", size=VECTOR_SIZE, vector=thresholded)
             
             added_count += 1
@@ -97,8 +98,8 @@ class WorkingMemoryGraph:
 
         # Get the vectors for the known concepts
         try:
-            v_known1 = self.space.get(knowns[0])
-            v_known2 = self.space.get(knowns[1])
+            v_known1 = self.space.get(names=[knowns[0]])[0]
+            v_known2 = self.space.get(names=[knowns[1]])[0]
         except Exception:
             return {"status": "failed", "message": "One or more queried concepts do not exist in the working memory."}
 
@@ -109,32 +110,28 @@ class WorkingMemoryGraph:
         noisy_result_array = self.memory_graph.vector * v_query_pointer
         noisy_vector = Vector(name="noisy_query", size=VECTOR_SIZE, vector=noisy_result_array)
 
-        # CLEANUP MEMORY: Find the closest match in the Codebook using Cosine Similarity
-        # hdlib's Space.find() handles distance calculations
-        matches = self.space.find(noisy_vector)
-        
-        if not matches:
+        # CLEANUP MEMORY: Find the closest matches using find_all for all candidates
+        distances, _ = self.space.find_all(noisy_vector)
+
+        if not distances:
             return {"status": "failed", "message": "No strong matches found in cleanup memory."}
 
-        # matches is typically a list of tuples: (Concept_Name, Distance)
-        # Sort to get the closest match (lowest distance / highest similarity)
-        best_match = matches[0] 
-        best_name = best_match[0]
-        # Calculate similarity score (1 - cosine distance)
-        similarity = 1.0 - best_match[1] 
+        # Build sorted list of (name, distance) pairs
+        all_matches = sorted(distances.items(), key=lambda x: x[1])
 
         # Filter out the concepts we used to query
-        filtered_matches = [m for m in matches if m[0] not in knowns and m[0] != "noisy_query"]
-        
+        filtered_matches = [(n, d) for n, d in all_matches
+                            if n not in knowns and n != "noisy_query"]
+
         if not filtered_matches:
             return {"status": "failed", "message": "No logical answer found in memory."}
 
-        best_result = filtered_matches[0]
-        
+        best_name, best_dist = filtered_matches[0]
+
         return {
-            "status": "success", 
-            "result": best_result[0], 
-            "confidence": round((1.0 - best_result[1]) * 100, 2) # Convert distance to % confidence
+            "status": "success",
+            "result": best_name,
+            "confidence": round((1.0 - best_dist) * 100, 2),
         }
 
 def main():
